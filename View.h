@@ -25,7 +25,7 @@
 
 #include "ViewObject.h"
 
-namespace syd {
+namespace sydmvc {
 
 template <class I>
 class View: public ViewObject<I>

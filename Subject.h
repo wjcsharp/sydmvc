@@ -25,7 +25,7 @@
 
 #include <vector>
 
-namespace syd {
+namespace sydmvc {
 
 template <class O>
 class Subject

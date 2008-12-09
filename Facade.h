@@ -26,7 +26,7 @@
 #include <vector>
 #include <map>
 
-namespace syd {
+namespace sydmvc {
 
 template <class I> class ViewObject;
 

@@ -25,7 +25,7 @@
 
 #include "Subject.h"
 
-namespace syd {
+namespace sydmvc {
 
 template <class S, class O>
 class SimpleSubject: public Subject<O>
