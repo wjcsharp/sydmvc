@@ -66,6 +66,10 @@ class Facade
 
         virtual void attachView(int key, ViewObject<I> *view)
         {
+            typename ViewList::iterator iter = _views.find(key);
+            if (iter != _views.end()) {
+                delete (iter->second);
+            }
             _views[key] = view;
         }
 
