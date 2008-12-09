@@ -60,9 +60,12 @@ class SimpleSubject: public Subject<O>
             }
         }
 
+        SimpleSubject() {}
+
     private:
         typedef std::map<O*, typename Subject<O>::NotificationList> ObserverList;
         ObserverList _observers;
+        DISALLOW_COPY_AND_ASSIGN(SimpleSubject);
 };
 
 }

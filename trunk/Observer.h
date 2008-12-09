@@ -29,6 +29,12 @@ class Observer
 {
     public:
         virtual void update(int) = 0;
+
+    protected:
+        Observer() {}
+
+    private:
+        DISALLOW_COPY_AND_ASSIGN(Observer);
 };
 
 }

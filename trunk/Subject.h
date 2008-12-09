@@ -24,6 +24,7 @@
 #define SYD_FRAMEWORK_SUBJECT_H_
 
 #include <vector>
+#include "macros.h"
 
 namespace sydmvc {
 
@@ -34,8 +35,13 @@ class Subject
         typedef std::vector<int> NotificationList;
         virtual void attach(O *, const NotificationList &) = 0;
         virtual void detach(O *) = 0;
+
     protected:
+        Subject() {}
         virtual void notify(int) = 0;
+
+    private:
+        DISALLOW_COPY_AND_ASSIGN(Subject);
 };
 
 }

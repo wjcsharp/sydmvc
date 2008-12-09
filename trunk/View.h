@@ -30,6 +30,11 @@ namespace sydmvc {
 template <class I>
 class View: public ViewObject<I>
 {
+    protected:
+        View() {}
+
+    private:
+        DISALLOW_COPY_AND_ASSIGN(View);
 };
 
 }
