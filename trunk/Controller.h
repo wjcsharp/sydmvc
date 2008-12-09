@@ -25,7 +25,7 @@
 
 #include "Observer.h"
 
-namespace syd {
+namespace sydmvc {
 
 template <class I> class Facade;
 template <class I> class System;

@@ -27,7 +27,7 @@
 #include <algorithm>
 #include "ViewObject.h"
 
-namespace syd {
+namespace sydmvc {
 
 template <class I>
 class ViewComposite: public ViewObject<I>

@@ -23,7 +23,7 @@
 #ifndef SYD_FRAMEWORK_OBSERVER_H_
 #define SYD_FRAMEWORK_OBSERVER_H_
 
-namespace syd {
+namespace sydmvc {
 
 class Observer
 {

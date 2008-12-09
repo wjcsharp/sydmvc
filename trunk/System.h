@@ -26,7 +26,7 @@
 #include <map>
 #include "SimpleSubject.h"
 
-namespace syd {
+namespace sydmvc {
 
 template <class I> class Controller;
 

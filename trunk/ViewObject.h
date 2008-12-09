@@ -23,7 +23,7 @@
 #ifndef SYD_FRAMEWORK_VIEWOBJECT_H_
 #define SYD_FRAMEWORK_VIEWOBJECT_H_
 
-namespace syd {
+namespace sydmvc {
 
 template <class I> class System;
 
