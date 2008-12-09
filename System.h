@@ -36,6 +36,12 @@ class System: public SimpleSubject<System<I>, Controller<I> >, public I
     public:
         virtual void handleEvents() {}
         virtual ~System() { }
+
+    protected:
+        System() {}
+
+    private:
+        DISALLOW_COPY_AND_ASSIGN(System);
 };
 
 }

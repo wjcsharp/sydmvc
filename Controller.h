@@ -53,8 +53,13 @@ class Controller: public Observer
         {
             return typename System<I>::NotificationList();
         }
+
+    protected:
+        Controller() {}
+
     private:
         Facade<I> *_facade;
+        DISALLOW_COPY_AND_ASSIGN(Controller);
 };
 
 }

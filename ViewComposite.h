@@ -33,6 +33,8 @@ template <class I>
 class ViewComposite: public ViewObject<I>
 {
     public:
+        ViewComposite() {}
+
         virtual void addChild(ViewObject *view)
         {
             _children.push_back(view);
@@ -57,6 +59,7 @@ class ViewComposite: public ViewObject<I>
     private:
         typedef std::vector<ViewObject *> ViewChildren;
         ViewChildren _children;
+        DISALLOW_COPY_AND_ASSIGN(View);
 };
 
 }

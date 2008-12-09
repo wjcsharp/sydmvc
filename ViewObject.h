@@ -34,6 +34,12 @@ class ViewObject
         virtual void draw(System<I> *) const {};
         virtual void addChild(ViewObject *view) {};
         virtual void removeChild(ViewObject *view) {};
+
+    protected:
+        ViewObject() {}
+
+    private:
+        DISALLOW_COPY_AND_ASSIGN(ViewObject);
 };
 
 }

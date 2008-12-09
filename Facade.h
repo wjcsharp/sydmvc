@@ -119,6 +119,8 @@ class Facade
         ControllerList _controllers;
         typedef std::map<int, ViewObject<I> *> ViewList;
         ViewList _views;
+
+        DISALLOW_COPY_AND_ASSIGN(Facade);
 };
 
 }
