@@ -28,6 +28,8 @@
 
 namespace sydmvc {
 
+class Model;
+
 template <class I> class ViewObject;
 
 template <class I>
@@ -84,9 +86,24 @@ class Facade
             return _views[key];
         }
 
+        virtual void attachModel(int key, Model *model)
+        {
+            ModelList::iterator iter = _models.find(key);
+            if (iter != _models.end()) {
+                delete (iter->second);
+            }
+            _models[key] = model;
+        }
+
+        virtual Model *getModel(int key)
+        {
+            return _models[key];
+        }
+
         virtual void initSystem() = 0;
         virtual void attachControllers() { }
         virtual void attachViews() { }
+        virtual void attachModels() { }
 
         virtual void run()
         {
@@ -119,6 +136,8 @@ class Facade
         ControllerList _controllers;
         typedef std::map<int, ViewObject<I> *> ViewList;
         ViewList _views;
+        typedef std::map<int, Model *> ModelList;
+        ModelList _models;
 
         DISALLOW_COPY_AND_ASSIGN(Facade);
 };
