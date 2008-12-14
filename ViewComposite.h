@@ -35,14 +35,14 @@ class ViewComposite: public ViewObject<I>
     public:
         ViewComposite() {}
 
-        virtual void addChild(ViewObject *view)
+        virtual void addChild(ViewObject<I> *view)
         {
             _children.push_back(view);
         }
 
-        virtual void removeChild(ViewObject *view)
+        virtual void removeChild(ViewObject<I> *view)
         {
-            ViewChildren::iterator iter = find(_children.begin(), _children.end(), view);
+            typename ViewChildren::iterator iter = find(_children.begin(), _children.end(), view);
             if (iter != _children.end()) {
                 _children.erase(iter);
             }
@@ -50,16 +50,25 @@ class ViewComposite: public ViewObject<I>
 
         virtual void draw(System<I> *sys) const
         {
-            for (ViewChildren::const_iterator iter = _children.begin();
+            for (typename ViewChildren::const_iterator iter = _children.begin();
                     iter != _children.end();
                     iter++) {
                 (*iter)->draw(sys);
             }
         }
+        
+        void setFacade(Facade<I> * facade)
+        {
+            for (typename ViewChildren::iterator iter = _children.begin();
+                    iter != _children.end();
+                    iter++) {
+                (*iter)->setFacade(facade);
+            }
+        }
     private:
-        typedef std::vector<ViewObject *> ViewChildren;
+        typedef std::vector<ViewObject<I> *> ViewChildren;
         ViewChildren _children;
-        DISALLOW_COPY_AND_ASSIGN(View);
+        DISALLOW_COPY_AND_ASSIGN(ViewComposite);
 };
 
 }
