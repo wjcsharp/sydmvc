@@ -62,6 +62,7 @@ class Facade
         {
             initSystem();
             attachControllers();
+            attachModels();
             attachViews();
         }
 
@@ -78,6 +79,7 @@ class Facade
             if (iter != _views.end()) {
                 delete (iter->second);
             }
+            view->setFacade(this);
             _views[key] = view;
         }
 

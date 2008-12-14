@@ -30,10 +30,22 @@ namespace sydmvc {
 template <class I>
 class View: public ViewObject<I>
 {
+    public:
+        void setFacade(Facade<I> * facade)
+        {
+            _facade = facade;
+        }
+
+        Facade<I> *getFacade() const
+        {
+            return _facade;
+        }
+
     protected:
         View() {}
 
     private:
+        Facade<I> *_facade;
         DISALLOW_COPY_AND_ASSIGN(View);
 };
 

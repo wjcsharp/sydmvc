@@ -26,11 +26,13 @@
 namespace sydmvc {
 
 template <class I> class System;
+template <class I> class Facade;
 
 template <class I>
 class ViewObject
 {
     public:
+        virtual void setFacade(Facade<I> * facade) = 0;
         virtual void draw(System<I> *) const {};
         virtual void addChild(ViewObject *view) {};
         virtual void removeChild(ViewObject *view) {};
