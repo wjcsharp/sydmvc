@@ -32,14 +32,24 @@ class Model;
 
 template <class I> class ViewObject;
 
+/**
+ * There should be one facade per program.  It is a simplified interface
+ * to the rest of the framework.  It should be subclassed.
+ */
 template <class I>
 class Facade
 {
     public:
+        /**
+         * Constructor.
+         */
         Facade():_quit(false),_system(NULL)
         {
         }
 
+        /**
+         * Destructor.
+         */
         virtual ~Facade()
         {
             for (typename ControllerList::iterator iter = _controllers.begin();
@@ -64,6 +74,9 @@ class Facade
             _system = NULL;
         }
 
+        /**
+         * Perform initialization.
+         */
         virtual void init()
         {
             initSystem();
@@ -72,6 +85,11 @@ class Facade
             attachViews();
         }
 
+        /**
+         * Attach a controller to the facade (and System).
+         *
+         * @param controller    Controller to attach.
+         */
         virtual void attachController(Controller<I> *controller)
         {
             controller->setFacade(this);
@@ -79,6 +97,12 @@ class Facade
             _controllers.push_back(controller);
         }
 
+        /**
+         * Attach a view to the facade.
+         *
+         * @param key   Key to attach the view with.
+         * @param view  View to attach.
+         */
         virtual void attachView(int key, ViewObject<I> *view)
         {
             typename ViewList::iterator iter = _views.find(key);
@@ -89,11 +113,23 @@ class Facade
             _views[key] = view;
         }
 
+        /**
+         * Get a view that has been attached.
+         *
+         * @param key   Key of the view to return.
+         * @return      View associated with the key.
+         */
         virtual ViewObject<I> *getView(int key) 
         {
             return _views[key];
         }
 
+        /**
+         * Attach a model to the facade.
+         *
+         * @param key   Key to attach the model with.
+         * @param model Model to attach.
+         */
         virtual void attachModel(int key, Model *model)
         {
             ModelList::iterator iter = _models.find(key);
@@ -103,16 +139,40 @@ class Facade
             _models[key] = model;
         }
 
+        /**
+         * Get a model that has been attached.
+         *
+         * @param key   Key of the model to return.
+         * @return      Model associated with the key.
+         */
         virtual Model *getModel(int key)
         {
             return _models[key];
         }
 
+        /**
+         * Initialize the system.
+         */
         virtual void initSystem() = 0;
+
+        /**
+         * Attach all the controllers.
+         */
         virtual void attachControllers() { }
+
+        /**
+         * Attach all the views.
+         */
         virtual void attachViews() { }
+
+        /**
+         * Attach all the models.
+         */
         virtual void attachModels() { }
 
+        /**
+         * Main loop of the program.
+         */
         virtual void run()
         {
             while (!_quit) {
@@ -121,18 +181,34 @@ class Facade
             }
         }
 
+        /**
+         * Called once per cycle, if there are no events.
+         */
         virtual void idle(void) {}
 
+        /**
+         * Cause the main loop to terminate.
+         */
         void quit(void)
         {
             _quit = true;
         }
 
+        /**
+         * Get the system attached to the facade.
+         *
+         * @return  System attached.
+         */
         System<I> *getSystem(void) const
         {
             return _system;
         }
 
+        /**
+         * Associate a system with the facade.
+         *
+         * @param system    System to associate.
+         */
         void setSystem(System<I> *system)
         {
             _system = system;
