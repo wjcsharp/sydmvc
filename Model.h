@@ -25,9 +25,16 @@
 
 namespace sydmvc {
 
+/**
+ * Models store all domain logic and should be the interface to the main
+ * portion of the application.
+ */
 class Model
 {
     public:
+        /**
+         * Destructor.
+         */
         virtual ~Model() { }
 };
 

@@ -27,15 +27,30 @@
 
 namespace sydmvc {
 
+/**
+ * A simple subject is a subject that uses a very simple system for the
+ * attaching, detaching, and notifying of observers.
+ */
 template <class S, class O>
 class SimpleSubject: public Subject<O>
 {
     public:
+        /**
+         * Attach an observer.
+         *
+         * @param observer  Observer to attach.
+         * @param list      Notification list associated with the observer.
+         */
         virtual void attach(O *observer, const typename Subject<O>::NotificationList &list)
         {
             _observers[observer] = list;
         }
 
+        /**
+         * Detach an observer.
+         *
+         * @param observer  Observer to detach.
+         */
         virtual void detach(O *observer)
         {
             typename ObserverList::iterator iter = _observers.find(observer);
@@ -45,6 +60,12 @@ class SimpleSubject: public Subject<O>
         }
 
     protected:
+
+        /**
+         * Notify all observers who are subscribed for the event.
+         *
+         * @param event Event type to notify observers of.
+         */
         virtual void notify(int event)
         {
             for (typename ObserverList::iterator iter = _observers.begin();
@@ -60,6 +81,9 @@ class SimpleSubject: public Subject<O>
             }
         }
 
+        /**
+         * Constructor.
+         */
         SimpleSubject() {}
 
     private:

@@ -25,10 +25,18 @@
 
 namespace sydmvc {
 
+/**
+ * An observer will watch a subject and be notified of updates.
+ */
 class Observer
 {
     public:
-        virtual void update(int) = 0;
+        /**
+         * Called by the subject when an update needs to happen.
+         *
+         * @param event Event type triggering the update.
+         */
+        virtual void update(int event) = 0;
 
     protected:
         Observer() {}

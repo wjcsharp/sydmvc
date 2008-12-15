@@ -30,25 +30,48 @@ namespace sydmvc {
 template <class I> class Facade;
 template <class I> class System;
 
+/**
+ * Controllers subscribe to the system to observe and process input before
+ * selecting a view to display.
+ */
 template <class I>
 class Controller: public Observer
 {
     public:
+        /**
+         * Set the facade.
+         *
+         * @param facade    Facade to use.
+         */
         void setFacade(Facade<I> * facade)
         {
             _facade = facade;
         }
 
+        /**
+         * Get the facade.
+         *
+         * @return  Facade being used.
+         */
         Facade<I> *getFacade() const
         {
             return _facade;
         }
 
+        /**
+         * Attach itself to the system.
+         */
         void attach()
         {
             getFacade()->getSystem()->attach(this, getNotificationList());
         }
        
+        /**
+         * Used by the system to request a list of notification types
+         * that should be observed.
+         *
+         * @return  A list of notification types.
+         */
         virtual typename System<I>::NotificationList getNotificationList()
         {
             return typename System<I>::NotificationList();
