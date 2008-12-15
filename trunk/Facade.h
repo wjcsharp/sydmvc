@@ -51,7 +51,13 @@ class Facade
             for (typename ViewList::iterator iter = _views.begin();
                     iter != _views.end();
                     iter++) {
-                if (iter->second) delete (iter->second);
+                if (iter->second) delete iter->second;
+                iter->second = NULL;
+            }
+            for (typename ModelList::iterator iter = _models.begin();
+                    iter != _models.end();
+                    iter++) {
+                if (iter->second) delete iter->second;
                 iter->second = NULL;
             }
             if (_system) delete _system;

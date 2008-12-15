@@ -65,6 +65,15 @@ class ViewComposite: public ViewObject<I>
                 (*iter)->setFacade(facade);
             }
         }
+
+        virtual ~ViewComposite()
+        {
+            for (typename ViewChildren::iterator iter = _children.begin();
+                    iter != _children.end();
+                    iter++) {
+                delete (*iter);
+            }
+        }
     private:
         typedef std::vector<ViewObject<I> *> ViewChildren;
         ViewChildren _children;

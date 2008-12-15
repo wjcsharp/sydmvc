@@ -37,6 +37,7 @@ class ViewObject
         virtual void addChild(ViewObject *view) {};
         virtual void removeChild(ViewObject *view) {};
 
+        virtual ~ViewObject() { }
     protected:
         ViewObject() {}
 
