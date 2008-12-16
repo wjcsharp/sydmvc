@@ -29,17 +29,33 @@
 
 namespace sydmvc {
 
+/**
+ * ViewComposites may contain other ViewComposites or Views.
+ */
 template <class I>
 class ViewComposite: public ViewObject<I>
 {
     public:
+        /**
+         * Empty constructor.
+         */
         ViewComposite() {}
 
+        /**
+         * Add a child view.
+         *
+         * @param view  View or ViewComposite to add.
+         */
         virtual void addChild(ViewObject<I> *view)
         {
             _children.push_back(view);
         }
 
+        /**
+         * Remove a child.
+         *
+         * @param view  View or ViewComposite to remove.
+         */
         virtual void removeChild(ViewObject<I> *view)
         {
             typename ViewChildren::iterator iter = find(_children.begin(), _children.end(), view);
@@ -48,6 +64,11 @@ class ViewComposite: public ViewObject<I>
             }
         }
 
+        /**
+         * Draw itself and the children.
+         *
+         * @param sys   System object to draw with.
+         */
         virtual void draw(System<I> *sys) const
         {
             for (typename ViewChildren::const_iterator iter = _children.begin();
@@ -57,6 +78,11 @@ class ViewComposite: public ViewObject<I>
             }
         }
         
+        /**
+         * Set the facade to be used.  Will call itself on children.
+         *
+         * @param facade    Facade to use.
+         */
         void setFacade(Facade<I> * facade)
         {
             for (typename ViewChildren::iterator iter = _children.begin();
@@ -66,6 +92,9 @@ class ViewComposite: public ViewObject<I>
             }
         }
 
+        /**
+         * Destructor.  Will clean up children, if any.
+         */
         virtual ~ViewComposite()
         {
             for (typename ViewChildren::iterator iter = _children.begin();

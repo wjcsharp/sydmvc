@@ -27,21 +27,37 @@
 
 namespace sydmvc {
 
+/**
+ * Views are the output system and can be nested within CompositeViews.
+ */
 template <class I>
 class View: public ViewObject<I>
 {
     public:
+        /**
+         * Set the facade to be used.
+         *
+         * @param facade    Facade to use.
+         */
         void setFacade(Facade<I> * facade)
         {
             _facade = facade;
         }
 
+        /**
+         * Get the facade being used.
+         *
+         * @return  Facade being used.
+         */
         Facade<I> *getFacade() const
         {
             return _facade;
         }
 
     protected:
+        /**
+         * Constructor.
+         */
         View() {}
 
     private:
