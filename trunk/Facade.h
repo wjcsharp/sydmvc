@@ -110,6 +110,7 @@ class Facade
                 delete (iter->second);
             }
             view->setFacade(this);
+            view->attach();
             _views[key] = view;
         }
 

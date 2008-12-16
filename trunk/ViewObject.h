@@ -23,6 +23,8 @@
 #ifndef SYD_FRAMEWORK_VIEWOBJECT_H_
 #define SYD_FRAMEWORK_VIEWOBJECT_H_
 
+#include "ModelObserver.h"
+
 namespace sydmvc {
 
 template <class I> class System;
@@ -32,7 +34,7 @@ template <class I> class Facade;
  * ViewObjects represent either Views or ViewComposites.
  */
 template <class I>
-class ViewObject
+class ViewObject: public ModelObserver
 {
     public:
         /**
@@ -47,26 +49,38 @@ class ViewObject
          *
          * @param sys   System to draw with.
          */
-        virtual void draw(System<I> *sys) const {};
+        virtual void draw(System<I> *sys) const {}
 
         /**
          * Add child.
          *
          * @param view  View or ViewComposite object to add as a child.
          */
-        virtual void addChild(ViewObject *view) {};
+        virtual void addChild(ViewObject *view) {}
 
         /**
          * Remove a child.
          *
          * @param view  View or ViewComposite object to remove.
          */
-        virtual void removeChild(ViewObject *view) {};
+        virtual void removeChild(ViewObject *view) {}
 
         /**
          * Empty virtual destructor.
          */
         virtual ~ViewObject() { }
+
+        /**
+         * Empty update method.
+         *
+         * @param event Event type.
+         */
+        virtual void update(int event) {}
+
+        /**
+         * Do any kind of model attachment needed.
+         */
+        virtual void attach() {}
     protected:
 
         /**
