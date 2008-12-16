@@ -1,6 +1,8 @@
 #summary A list of classes exposed to the user and their purpose.
 #labels Phase-Design
 
+http://sydmvc.googlecode.com/svn/wiki/sydmvc.png
+
 =Classes=
 This page details the classes exposed by the framework.
 
