@@ -28,17 +28,50 @@ namespace sydmvc {
 template <class I> class System;
 template <class I> class Facade;
 
+/**
+ * ViewObjects represent either Views or ViewComposites.
+ */
 template <class I>
 class ViewObject
 {
     public:
+        /**
+         * Set the facade to be used.
+         *
+         * @param facade    Facade to use.
+         */
         virtual void setFacade(Facade<I> * facade) = 0;
-        virtual void draw(System<I> *) const {};
+
+        /**
+         * Draw itself.
+         *
+         * @param sys   System to draw with.
+         */
+        virtual void draw(System<I> *sys) const {};
+
+        /**
+         * Add child.
+         *
+         * @param view  View or ViewComposite object to add as a child.
+         */
         virtual void addChild(ViewObject *view) {};
+
+        /**
+         * Remove a child.
+         *
+         * @param view  View or ViewComposite object to remove.
+         */
         virtual void removeChild(ViewObject *view) {};
 
+        /**
+         * Empty virtual destructor.
+         */
         virtual ~ViewObject() { }
     protected:
+
+        /**
+         * Empty constructor.
+         */
         ViewObject() {}
 
     private:

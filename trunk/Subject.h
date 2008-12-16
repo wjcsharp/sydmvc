@@ -28,13 +28,29 @@
 
 namespace sydmvc {
 
+/**
+ * Subjects are observed by observers.
+ */
 template <class O>
 class Subject
 {
     public:
         typedef std::vector<int> NotificationList;
-        virtual void attach(O *, const NotificationList &) = 0;
-        virtual void detach(O *) = 0;
+
+        /**
+         * Attach an observer.
+         *
+         * @param observer  Observer to attach.
+         * @param nl        Notification list associated with observer.
+         */
+        virtual void attach(O *observer, const NotificationList &nl) = 0;
+
+        /**
+         * Detach an observer.
+         *
+         * @param observer  Observer to detach.
+         */
+        virtual void detach(O *observer) = 0;
 
     protected:
         Subject() {}

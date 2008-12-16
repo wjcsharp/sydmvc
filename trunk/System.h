@@ -30,14 +30,28 @@ namespace sydmvc {
 
 template <class I> class Controller;
 
+/**
+ * A system is the core of the interaction with the underlying system
+ * including most input/output.
+ */
 template <class I>
 class System: public SimpleSubject<System<I>, Controller<I> >, public I
 {
     public:
+        /**
+         * Handle all events waiting on a system-specific queue.
+         */
         virtual void handleEvents() {}
+
+        /**
+         * Destructor.
+         */
         virtual ~System() { }
 
     protected:
+        /**
+         * Constructor.
+         */
         System() {}
 
     private:
