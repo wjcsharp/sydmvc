@@ -19,35 +19,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+#ifndef SYD_FRAMEWORK_MODELOBSERVER_H_
+#define SYD_FRAMEWORK_MODELOBSERVER_H_
 
-#ifndef SYD_FRAMEWORK_MODEL_H_
-#define SYD_FRAMEWORK_MODEL_H_
-
-#include "Subject.h"
+#include "Observer.h"
 
 namespace sydmvc {
 
-class ModelObserver;
-
 /**
- * Models store all domain logic and should be the interface to the main
- * portion of the application.
+ * Model observer.
  */
-class Model: public SimpleSubject<Model, ModelObserver> 
+class ModelObserver: public Observer
 {
-    public:
+    protected:
         /**
-         * Empty constructor.
+         * Empty cosntructor.
          */
-        Model() { }
-
-        /**
-         * Destructor.
-         */
-        virtual ~Model() { }
-
+        ModelObserver() {}
     private:
-        DISALLOW_COPY_AND_ASSIGN(Model);
+        DISALLOW_COPY_AND_ASSIGN(ModelObserver);
 };
 
 }

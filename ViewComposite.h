@@ -103,6 +103,32 @@ class ViewComposite: public ViewObject<I>
                 delete (*iter);
             }
         }
+
+        /**
+         * Update method.
+         *
+         * @param event Event type.
+         */
+        virtual void update(int event)
+        {
+            for (typename ViewChildren::iterator iter = _children.begin();
+                    iter != _children.end();
+                    iter++) {
+                (*iter)->update(event);
+            }
+        }
+
+        /**
+         * Attach method.
+         */
+        virtual void attach()
+        {
+            for (typename ViewChildren::iterator iter = _children.begin();
+                    iter != _children.end();
+                    iter++) {
+                (*iter)->attach();
+            }
+        }
     private:
         typedef std::vector<ViewObject<I> *> ViewChildren;
         ViewChildren _children;
