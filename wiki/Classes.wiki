@@ -3,10 +3,6 @@
 
 http://sydmvc.googlecode.com/svn/wiki/sydmvc.png
 
-=Classes=
-This page details the classes exposed by the framework.
-
-
 ==Model==
 The model is designed to house the domain logic of the application.  It should not know or be coupled with the views or controllers.
 
@@ -15,6 +11,9 @@ A view is responsible for rendering or other kinds of output.  They may be compo
 
 ==Controller==
 Controllers are responsible for business logic and processing input.
+
+==Interface==
+Interface.
 
 ==System==
 System is responsible for implementing the low-level details for handling events and rendering.
