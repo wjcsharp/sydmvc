@@ -25,6 +25,10 @@
 
 #include <vector>
 #include <map>
+#include "Controller.h"
+#include "System.h"
+#include "ViewObject.h"
+#include "Model.h"
 
 namespace sydmvc {
 

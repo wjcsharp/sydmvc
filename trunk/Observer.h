@@ -23,6 +23,8 @@
 #ifndef SYD_FRAMEWORK_OBSERVER_H_
 #define SYD_FRAMEWORK_OBSERVER_H_
 
+#include "macros.h"
+
 namespace sydmvc {
 
 /**
