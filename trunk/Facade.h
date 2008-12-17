@@ -90,7 +90,7 @@ class Facade
          *
          * @param controller    Controller to attach.
          */
-        virtual void attachController(Controller<I> *controller)
+        virtual void attachController(Controller<I> * const controller)
         {
             controller->setFacade(this);
             controller->attach();
@@ -103,7 +103,7 @@ class Facade
          * @param key   Key to attach the view with.
          * @param view  View to attach.
          */
-        virtual void attachView(int key, ViewObject<I> *view)
+        virtual void attachView(int key, ViewObject<I> * const view)
         {
             typename ViewList::iterator iter = _views.find(key);
             if (iter != _views.end()) {
@@ -131,7 +131,7 @@ class Facade
          * @param key   Key to attach the model with.
          * @param model Model to attach.
          */
-        virtual void attachModel(int key, Model *model)
+        virtual void attachModel(int key, Model * const model)
         {
             ModelList::iterator iter = _models.find(key);
             if (iter != _models.end()) {
@@ -159,17 +159,17 @@ class Facade
         /**
          * Attach all the controllers.
          */
-        virtual void attachControllers() { }
+        virtual void attachControllers() {}
 
         /**
          * Attach all the views.
          */
-        virtual void attachViews() { }
+        virtual void attachViews() {}
 
         /**
          * Attach all the models.
          */
-        virtual void attachModels() { }
+        virtual void attachModels() {}
 
         /**
          * Main loop of the program.
@@ -190,7 +190,7 @@ class Facade
         /**
          * Cause the main loop to terminate.
          */
-        void quit(void)
+        virtual void quit(void)
         {
             _quit = true;
         }
@@ -200,7 +200,7 @@ class Facade
          *
          * @return  System attached.
          */
-        System<I> *getSystem(void) const
+        virtual System<I> *getSystem(void) const
         {
             return _system;
         }
@@ -210,7 +210,7 @@ class Facade
          *
          * @param system    System to associate.
          */
-        void setSystem(System<I> *system)
+        virtual void setSystem(System<I> * const system)
         {
             _system = system;
         }

@@ -42,33 +42,33 @@ class ViewObject: public ModelObserver
          *
          * @param facade    Facade to use.
          */
-        virtual void setFacade(Facade<I> * facade) = 0;
+        virtual void setFacade(Facade<I> * const facade) = 0;
 
         /**
          * Draw itself.
          *
          * @param sys   System to draw with.
          */
-        virtual void draw(System<I> *sys) const {}
+        virtual void draw(System<I> * const sys) const {}
 
         /**
          * Add child.
          *
          * @param view  View or ViewComposite object to add as a child.
          */
-        virtual void addChild(ViewObject *view) {}
+        virtual void addChild(ViewObject * const view) {}
 
         /**
          * Remove a child.
          *
          * @param view  View or ViewComposite object to remove.
          */
-        virtual void removeChild(ViewObject *view) {}
+        virtual void removeChild(ViewObject * const view) {}
 
         /**
          * Empty virtual destructor.
          */
-        virtual ~ViewObject() { }
+        virtual ~ViewObject() {}
 
         /**
          * Empty update method.
@@ -82,10 +82,6 @@ class ViewObject: public ModelObserver
          */
         virtual void attach() {}
     protected:
-
-        /**
-         * Empty constructor.
-         */
         ViewObject() {}
 
     private:

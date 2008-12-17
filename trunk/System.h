@@ -43,15 +43,9 @@ class System: public SimpleSubject<System<I>, Controller<I> >, public I
          */
         virtual void handleEvents() {}
 
-        /**
-         * Destructor.
-         */
-        virtual ~System() { }
+        virtual ~System() {}
 
     protected:
-        /**
-         * Constructor.
-         */
         System() {}
 
     private:

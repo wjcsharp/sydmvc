@@ -40,6 +40,7 @@ class Observer
 
     protected:
         Observer() {}
+        ~Observer() {}
 
     private:
         DISALLOW_COPY_AND_ASSIGN(Observer);
