@@ -43,17 +43,18 @@ class Subject
          * @param observer  Observer to attach.
          * @param nl        Notification list associated with observer.
          */
-        virtual void attach(O *observer, const NotificationList &nl) = 0;
+        virtual void attach(O * const observer, const NotificationList &nl) = 0;
 
         /**
          * Detach an observer.
          *
          * @param observer  Observer to detach.
          */
-        virtual void detach(O *observer) = 0;
+        virtual void detach(O * const observer) = 0;
 
     protected:
         Subject() {}
+        virtual ~Subject() {}
         virtual void notify(int) = 0;
 
     private:

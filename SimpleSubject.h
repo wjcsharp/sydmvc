@@ -41,7 +41,7 @@ class SimpleSubject: public Subject<O>
          * @param observer  Observer to attach.
          * @param list      Notification list associated with the observer.
          */
-        virtual void attach(O *observer, const typename Subject<O>::NotificationList &list)
+        virtual void attach(O * const observer, const typename Subject<O>::NotificationList &list)
         {
             _observers[observer] = list;
         }
@@ -51,7 +51,7 @@ class SimpleSubject: public Subject<O>
          *
          * @param observer  Observer to detach.
          */
-        virtual void detach(O *observer)
+        virtual void detach(O * const observer)
         {
             typename ObserverList::iterator iter = _observers.find(observer);
             if (iter != _observers.end()) {
@@ -81,10 +81,8 @@ class SimpleSubject: public Subject<O>
             }
         }
 
-        /**
-         * Constructor.
-         */
         SimpleSubject() {}
+        virtual ~SimpleSubject() {}
 
     private:
         typedef std::map<O*, typename Subject<O>::NotificationList> ObserverList;

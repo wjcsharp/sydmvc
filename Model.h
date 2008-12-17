@@ -39,12 +39,12 @@ class Model: public SimpleSubject<Model, ModelObserver>
         /**
          * Empty constructor.
          */
-        Model() { }
+        Model() {}
 
         /**
-         * Destructor.
+         * Empty destructor.
          */
-        virtual ~Model() { }
+        virtual ~Model() {}
 
     private:
         DISALLOW_COPY_AND_ASSIGN(Model);

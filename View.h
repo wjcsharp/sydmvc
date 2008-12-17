@@ -39,7 +39,7 @@ class View: public ViewObject<I>
          *
          * @param facade    Facade to use.
          */
-        void setFacade(Facade<I> * facade)
+        void setFacade(Facade<I> * const facade)
         {
             _facade = facade;
         }
@@ -55,10 +55,8 @@ class View: public ViewObject<I>
         }
 
     protected:
-        /**
-         * Constructor.
-         */
         View() {}
+        virtual ~View() {}
 
     private:
         Facade<I> *_facade;

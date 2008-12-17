@@ -46,7 +46,7 @@ class ViewComposite: public ViewObject<I>
          *
          * @param view  View or ViewComposite to add.
          */
-        virtual void addChild(ViewObject<I> *view)
+        virtual void addChild(ViewObject<I> * const view)
         {
             _children.push_back(view);
         }
@@ -56,7 +56,7 @@ class ViewComposite: public ViewObject<I>
          *
          * @param view  View or ViewComposite to remove.
          */
-        virtual void removeChild(ViewObject<I> *view)
+        virtual void removeChild(ViewObject<I> * const view)
         {
             typename ViewChildren::iterator iter = find(_children.begin(), _children.end(), view);
             if (iter != _children.end()) {
@@ -69,7 +69,7 @@ class ViewComposite: public ViewObject<I>
          *
          * @param sys   System object to draw with.
          */
-        virtual void draw(System<I> *sys) const
+        virtual void draw(System<I> * const sys) const
         {
             for (typename ViewChildren::const_iterator iter = _children.begin();
                     iter != _children.end();
@@ -83,7 +83,7 @@ class ViewComposite: public ViewObject<I>
          *
          * @param facade    Facade to use.
          */
-        void setFacade(Facade<I> * facade)
+        void setFacade(Facade<I> * const facade)
         {
             for (typename ViewChildren::iterator iter = _children.begin();
                     iter != _children.end();

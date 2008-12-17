@@ -32,10 +32,9 @@ namespace sydmvc {
 class ModelObserver: public Observer
 {
     protected:
-        /**
-         * Empty cosntructor.
-         */
         ModelObserver() {}
+        virtual ~ModelObserver() {}
+
     private:
         DISALLOW_COPY_AND_ASSIGN(ModelObserver);
 };

@@ -43,7 +43,7 @@ class Controller: public Observer
          *
          * @param facade    Facade to use.
          */
-        void setFacade(Facade<I> * facade)
+        virtual void setFacade(Facade<I> * const facade)
         {
             _facade = facade;
         }
@@ -53,7 +53,7 @@ class Controller: public Observer
          *
          * @return  Facade being used.
          */
-        Facade<I> *getFacade() const
+        virtual Facade<I> *getFacade() const
         {
             return _facade;
         }
@@ -61,7 +61,7 @@ class Controller: public Observer
         /**
          * Attach itself to the system.
          */
-        void attach()
+        virtual void attach()
         {
             getFacade()->getSystem()->attach(this, getNotificationList());
         }
@@ -72,10 +72,15 @@ class Controller: public Observer
          *
          * @return  A list of notification types.
          */
-        virtual typename System<I>::NotificationList getNotificationList()
+        virtual typename System<I>::NotificationList getNotificationList() const
         {
             return typename System<I>::NotificationList();
         }
+
+        /**
+         * Empty destructor.
+         */
+        virtual ~Controller() {}
 
     protected:
         Controller() {}
